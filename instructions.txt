@@ -1,0 +1,57 @@
+Generally you must use Django to create a REST API, you can use the latest version of Django
+
+Please confirm to us that you have received this email, by answering it.
+Please contact us via email as soon as you have done the exercise.
+if you have questions do not hesitate to contact us.
+
+Exercise 1 (easy for a junior)
+
+Setup a Django project
+Create an endpoint that requires 2 integers and returns the sum of the integers
+Create a unit test for this endpoint
+Query the endpoint with Postman
+upload your project in a public github repository with the name saynode-rest-1 and give us the link
+Exercise 2 (medium for a junior)
+
+create a new branch exercise-2
+
+Connect with a Posgres DB
+
+install DJ-Rest-Auth library
+
+Create authentication endpoints
+
+registration
+
+login
+
+logout
+
+create unit tests for these endpoints
+
+create a user, login and logout using postman
+
+commit your work, push your branch and create a pull request
+
+merge your pull request to your main branch
+
+Exercise 3 (difficult for a junior)
+
+create a new branch exercise-3
+option 3.1
+
+create a docker configuration for your application
+make your application possible to be ran in a docker environment with a simple docker command
+have your application create some migration files inside the docker environment for your data structures
+create an automation that exports these data structures to your local codebase, so that migration files created in docker are present in the codebase.
+option 3.2
+
+
+connect the application with a smart contract of your choice on a blockchain of your choice.
+create one or more rest endpoint that interact with the contract
+create unit tests for those endpoints
+test the endpoints with Postman
+When you have done one or more options
+
+commit your work, push your branch and create a pull request
+merge your pull request to your main branch
