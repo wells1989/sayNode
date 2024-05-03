@@ -125,19 +125,4 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost.com', 
-    'http://127.0.0.1',
-]
-
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOW_HEADERS = [
-    "access-control-allow-credentials",
-    "content-type",
-    "X-Csrftoken"
-]
-
-CSRF_COOKIE_SAMESITE = 'None'
-
 CSRF_COOKIE_NAME = 'csrfmiddlewaretoken'
