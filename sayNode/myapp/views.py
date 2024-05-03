@@ -1,11 +1,12 @@
 from django.shortcuts import render, HttpResponse
 import json
+import requests
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
 # version with csrf_exempt
-@csrf_exempt 
+@ensure_csrf_cookie
 def sum_integers(request):
 
     try:
@@ -16,6 +17,7 @@ def sum_integers(request):
         int_2 = int(data.get("int_2"))
 
         total = int_1 + int_2
+        print(total)
 
         return JsonResponse({'sum': total})
     
