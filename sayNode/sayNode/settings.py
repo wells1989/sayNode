@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -94,11 +95,11 @@ WSGI_APPLICATION = "sayNode.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER': 'django_user',
-        'PASSWORD': 'django_56%_pw',
-        'HOST': 'localhost',
-        'PORT': '5434',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': 5434
     },
 }
 
@@ -144,20 +145,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost.com', 
-    'http://127.0.0.1',
-]
-
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOW_HEADERS = [
-    "access-control-allow-credentials",
-    "content-type",
-    "X-Csrftoken"
-]
-
-CSRF_COOKIE_SAMESITE = 'None'
 
 CSRF_COOKIE_NAME = 'csrfmiddlewaretoken'
