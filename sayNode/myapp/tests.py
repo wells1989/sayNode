@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 import json
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate
 import datetime
 
 User = get_user_model()
@@ -194,7 +194,6 @@ class LoginViewTest(TestCase):
         key_value = response_data['key']
         self.assertTrue(len(key_value) > 10)
 
-
     def test_unsuccessful_login(self):
         login_data = {
             'username': self.user.username,
@@ -242,15 +241,11 @@ class LogoutViewTest(TestCase):
             password='test_password'
         )
 
-    def test_logout(self):
-        # authenticating the user
-        login_data = {
-            'username': self.user.username,
-            'password': 'test_password'
-        }
+    def test_logout_authenticated_user(self):
+        # authenticating / logging in the user
+        user = authenticate(username=self.user.username, password='test_password')
 
-        login_response = self.client.post(self.login_url, login_data)
-        self.assertEqual(login_response.status_code, 200)
+        self.client.force_login(user)
 
         # Performing logout action
         response = self.client.post(self.logout_url)
@@ -277,4 +272,14 @@ class LogoutViewTest(TestCase):
         logout_message = response_data['detail']
         self.assertEqual(logout_message, "Successfully logged out.")
 
+    def test_logout_unauthenticated_user(self):
+        response = self.client.post(self.logout_url)
 
+        self.assertEqual(response.status_code, 200)
+
+        # Check if the session is still empty
+        session = self.client.session
+        self.assertFalse(session.has_key('_auth_user_id'))
+
+        response_data = response.json()
+        self.assertEqual(response_data['detail'], "Successfully logged out.")
