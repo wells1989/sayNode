@@ -25,3 +25,13 @@ urlpatterns = [
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls'))
 ]
+
+"""
+url authenticated paths
+registration: /dj-rest-auth/registration/
+login: /dj-rest-auth/login/
+
+user: (to check login status) /dj-rest-auth/user/
+
+logout: /dj-rest-auth/logout/
+"""
