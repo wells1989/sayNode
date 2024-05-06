@@ -261,7 +261,7 @@ class LogoutViewTest(TestCase):
         expiration_date_formatted = datetime.datetime.strptime(expires, '%a, %d %b %Y %H:%M:%S %Z')
         current_time = datetime.datetime.utcnow()
 
-        # Asserting that sessionid is either absent or an empty string
+        # Asserting that sessionid is either absent or none
         self.assertTrue(sessionid == "" or sessionid is None)
 
         # asserting that expiration date is expired or none
