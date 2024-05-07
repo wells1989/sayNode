@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  web:
+    image: saynode:latest
+    build: sayNode/.
+
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./sayNode/myapp/migrations:/app/myapp/migrations
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
