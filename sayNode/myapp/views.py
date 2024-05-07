@@ -17,7 +17,6 @@ def sum_integers(request):
         int_2 = int(data.get("int_2"))
 
         total = int_1 + int_2
-        print(total)
 
         return JsonResponse({'sum': total})
     
